@@ -24,8 +24,9 @@ decennial_2020_vars <- load_variables(
   year = 2020, 
   "pl", 
   cache = TRUE
-)# 2010 Decennial Census Variables
+)
 
+# 2010 Decennial Census Variables
 decennial_2010_vars <- load_variables(
   year = 2010, 
   "pl", 
