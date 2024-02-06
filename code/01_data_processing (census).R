@@ -32,3 +32,6 @@ decennial_2010_vars <- load_variables(
   "pl", 
   cache = TRUE
 )
+
+
+View(decennial_2010_vars)
