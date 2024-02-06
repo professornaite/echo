@@ -1,6 +1,5 @@
 # step 01: data processing (census)
 
-
 ## census data
 # request census API key here: https://api.census.gov/data/key_signup.html
 
@@ -32,6 +31,5 @@ decennial_2010_vars <- load_variables(
   "pl", 
   cache = TRUE
 )
-
 
 View(decennial_2010_vars)
