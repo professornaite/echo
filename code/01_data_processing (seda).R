@@ -12,12 +12,18 @@ seda2023_state_poolsub_YS <- read.csv("https://stacks.stanford.edu/file/druid:xt
 seda2023_state_poolsub_YS
 df23 <- seda2023_state_poolsub_YS
 dim(df23)
-glimpse(df23)
 head(df23)
 tail(df23)
+glimpse(df23)
+summary(df23)
 
-# subset data
-nc <- select(df23$stateabb == "NC")
+# subset data for North Carolina
+nc <- filter(df23, stateabb == "NC")
+nc
+glimpse(nc)
+
+# view sedaadmin = administrative school districts
+
   
 # SEDA2022_ADMINDIST
 seda2022 <- read.csv("data/seda2022_admindist_poolsub_gys_2.0.csv")
