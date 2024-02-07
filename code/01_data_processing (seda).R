@@ -24,7 +24,7 @@ glimpse(nc)
 
 # view sedaadmin = administrative school districts
 
-  
+
 # SEDA2022_ADMINDIST
 seda2022 <- read.csv("data/seda2022_admindist_poolsub_gys_2.0.csv")
 View(seda2022)
