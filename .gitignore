@@ -1,4 +1,6 @@
+code/.ipynb_checkpoints/
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+.DS_Store
