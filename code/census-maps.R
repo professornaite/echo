@@ -13,7 +13,7 @@ install.packages("tmap")
 
 library(tmap)
 library(tidyverse)
-library(tidycensus)
+library(tidycensus) 
 library(sf)
 
 # variable list
