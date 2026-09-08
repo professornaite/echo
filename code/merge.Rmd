@@ -1,0 +1,57 @@
+---
+title: "Untitled"
+output: html_document
+date: "2025-09-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+here::i_am("merge.Rmd")
+```
+
+```{r census}
+# loading census data
+
+
+
+```
+
+
+```{r fatal force}
+# loading census data
+
+
+
+```
+
+
+```{r k-12 shootings}
+# loading census data
+
+
+
+```
+
+
+```{r civil rights}
+# loading census data
+
+
+
+```
+
+
+```{r seda}
+# loading census data
+
+
+
+```
+
+
+```{r}
+
+
+
+```

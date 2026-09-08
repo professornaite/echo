@@ -1,7 +1,5 @@
-## ECHO: Education, Community, and Health Outcomes Project
+## ECHO: Education, Community, and Health Outcomes
 
-The ECHO project is a new initiative that seeks to develop indicators that relate education and a host of community-level indicators and health outcomes, with a focus on critical public health research and frameworks, including inequality metrics commonly used in the social sciences.
+ECHO—Education, Community, and Health Outcomes—integrates publicly available education, community, demographic, and health data to support research on local conditions and educational opportunity.
 
-Project PIs: Harlin Lee (UNC Chapel Hill) and Nathan Alexander (Howard University)
-
-The sedaamin variable is the NCES District ID for each school. These can be searched at https://nces.ed.gov/ccd/schoolsearch/. 
+The project is designed to develop indicators and analytic resources for studying relationships among educational outcomes, community contexts, and health outcomes across local geographies such as school districts, cities, neighborhoods, census tracts, and counties. 

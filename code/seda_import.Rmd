@@ -1,0 +1,97 @@
+---
+title: "Stanford Education Data Archive (SEDA)"
+subtitle: "Data Import"
+author:
+- "Nathan Alexander, PhD"
+- "Center for Applied Data Science and Analytics (CADSA)"
+- "School of Education"
+- "Howard University"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    theme: cerulean
+    always_allow_html: true
+    self_contained: true
+  pdf: null
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{r setup, include=T, message=F, warning=F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=F, warning=F}
+# data import
+# install.packages("readstata13").
+library(readstata13)
+
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(weights)
+library(here)
+here::i_am("seda-import.Rmd")
+```
+
+We import and prepare for the analysis of the [Stanford Education Data Archive (SEDA) data](https://edopportunity.org/).
+
+# DATA
+
+## Segregation Tracking Project (STP) data
+
+The [STP data](https://edopportunity.org/segregation/) is described as "a comprehensive resource for tracking segregation in the U.S., across every neighborhood and every school."
+
+### National
+
+```{r}
+national <- read.dta13("../data/school_seg_national_1.0.dta")
+
+```
+
+### State 
+
+```{r}
+state <- read.dta13("../data/school_seg_state_1.0.dta")
+```
+
+### County
+
+```{r}
+county <- read.dta13("../data/school_seg_county_1.0.dta")
+```
+
+### Core-Based Statistical Area (2023 definition) 
+
+```{r}
+cbsa23 <- read.dta13("../data/school_seg_cbsa23_1.0.dta")
+```
+
+### Administrative School District data
+
+Due to the size of the administrative data, I am unable to pull the data.
+
+```{r, eval=F}
+seg_lea <- read.csv("https://stacks.stanford.edu/file/druid:gm391gj1253/school_seg_lea_1.0.csv")
+```
+
+### Geographic School District
+
+Similar to the administrative school district data, I am unable to pull the large file.
+
+```{r, eval=F}
+seg_geolea<- read.csv("https://stacks.stanford.edu/file/druid:gm391gj1253/school_seg_geolea_1.0.csv")
+```
+
+
+# References
+
+Reardon, Sean F., Ann Owens, Demetra Kalogrides, Heewon Jang, and Thalia Tom. 2024. The Segregation Explorer (Version 1.0). http://edopportunity.org/segregation

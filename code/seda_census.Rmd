@@ -1,0 +1,124 @@
+---
+title: "SEDA -- Census"
+subtitle: "Data merge"
+author:
+- "Nathan Alexander, PhD"
+- "Center for Applied Data Science and Analytics (CADSA)"
+- "School of Education"
+- "Howard University"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    theme: cerulean
+    always_allow_html: true
+    self_contained: true
+  pdf: null
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+```{r setup, include=T, message=F, warning=F}
+knitr::opts_chunk$set(echo = TRUE)
+
+pkgs <- c("tidycensus", "tidyverse", "mapview", "survey", "srvyr", "arcgislayers")
+# install.packages(pkgs) # uncomment to install the packages
+
+library(tidyverse)
+library(tidycensus)
+library(sf)
+library(tidyverse)
+library(ggplot2)
+library(weights)
+library(dplyr)
+library(stringr)
+
+options(tigris_use_cache = TRUE)
+
+# data import
+# install.packages("readstata13").
+library(readstata13)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+library(weights)
+library(here)
+here::i_am("seda_census.Rmd")
+```
+
+# Census-CBSA
+
+```{r, message=F, warning=F}
+race_vars <- c(
+  Hispanic = "P5_010N",
+  White = "P5_003N",
+  Black = "P5_004N",
+  Native = "P5_005N",
+  Asian = "P5_006N",
+  HIPI = "P5_007N"
+)
+
+# Core-Based Statistical Areas (CBSA)
+cbsa_race <- get_decennial(
+  geography = "cbsa",
+  variables = race_vars,
+  summary_var = "P5_001N", 
+  year = 2020,
+  sumfile = "dhc"
+)
+
+glimpse(cbsa_race)
+```
+
+# SEDA-CBSA
+
+SEDA Core-Based Statistical Area (2023 definition)
+
+```{r}
+cbsa23 <- read.dta13("../data/school_seg_cbsa23_1.0.dta")
+glimpse(cbsa23)
+```
+
+## SEDA 2020 data
+
+Filter for 2020 data.
+
+```{r}
+cbsa23 %>% 
+  filter(year == 2020) -> cbsa_2020
+glimpse(cbsa_2020)
+```
+
+# Merge
+
+```{r}
+merge <- left_join(cbsa_2020, cbsa_race, by = c("cbsa23id" = "GEOID"))
+glimpse(merge)
+```
+
+# Analysis
+
+## Variable descriptors
+
+Variables represent cross-sectional (xs) racial achievement gaps, with "wht" referring to White students, "blk" to Black students, "hsp" to Hispanic students, "asn" to Asian students, "nam" to Native American students, "min" to minority students, and "nwh" to non-White Hispanic students. "was" refers to White achievement score. For example, `xs_wht_blk` represents the cross-sectional achievement gap between White and Black students.
+
+## DC
+
+```{r}
+merge %>% 
+  filter(cbsa23id == 47900) -> dc_census_seda
+
+dc_census_seda %>% 
+  relocate(variable, value) %>% 
+  select(variable, value, cbsa23name, starts_with("sg_")) %>% 
+  glimpse()
+```
+
+
