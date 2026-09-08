@@ -49,7 +49,7 @@ All files retain their original download names (and capitalization) to avoid con
 ```{r}
 # load the data
 
-df <- read_csv("NHE2022/NHE2022.csv")
+df <- read_csv("../data/NHE2022.csv")
 df
 ```
 
