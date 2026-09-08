@@ -1,0 +1,69 @@
+---
+title: "National Health Expenditures (NHE)"
+author: 
+- "Nathan Alexander"
+- "Center for Applied Data Science and Analytics (CADSA)"
+- "Howard University"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Overview
+
+This file is provided as a preliminary resource until this data is added to the `critstats` package. You may also use this code to gather data related to your class project, thesis, or other academic tasks beyond what is provided below. Content in this file comes from a host of different sources which you should be familiar with prior to access and analyzing any data.
+
+An important first step is to read the codebook for the data. More information can be viewed at the bottom of the file in the references section. This file will be updated periodically.
+
+### Set up your work enviornment
+
+Open up a new .Rmd file.
+
+Use `{r setup, include=F}` in your first code chunk.
+
+```{r setup, include=T}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(readr) 
+library(dplyr)
+library(httr)
+library(jsonlite)
+```
+
+```{r, include=F}
+library(here)
+here::i_am("nhe.Rmd")
+```
+
+To load the National Health Expenditures (NHE) data, you will need to download the .zip file containing the raw data. 
+
+The source file for raw data is available [here](https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/historical).
+
+Once you have your data, you can then proceed with your cleaning and subsequent analysis.
+
+## Load your data
+
+Take note of the directory used here to refer to the folder that is downloaded from the NHE website. 
+All files retain their original download names (and capitalization) to avoid confusion.
+
+```{r}
+# load the data
+
+df <- read_csv("NHE2022/NHE2022.csv")
+df
+```
+
+Save data frame.
+
+```{r}
+
+
+write_csv(df, "nhe-by-service-1960-2022.csv")
+
+
+
+```
+
+## References
+
+Centers for Medicare & Medicaid Services. (n.d.). National health expenditure data: Historical. Retrieved from https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/historical
